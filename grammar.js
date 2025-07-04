@@ -86,10 +86,9 @@ module.exports = grammar({
       ),
 
     instruction: ($) =>
-      seq(
-        field("mnemonic", choice(...INSTRUCTIONS.map((i) => token(i)))),
-        optional($.operands),
-      ),
+      seq(field("mnemonic", $.instruction_name), optional($.operands)),
+
+    instruction_name: ($) => choice(...INSTRUCTIONS.map((i) => token(i))),
 
     operands: ($) => seq($.operand, repeat(seq(",", $.operand))),
 
