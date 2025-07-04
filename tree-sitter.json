@@ -1,0 +1,40 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "nyx",
+      "camelcase": "Nyx",
+      "title": "Nyx",
+      "scope": "source.nyx",
+      "file-types": [
+        "nyx"
+      ],
+      "injection-regex": "^nyx$",
+      "class-name": "TreeSitterNyx"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Nyx grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "ciathefed",
+        "email": "ciathefed@protonmail.com",
+        "url": "https://github.com/ciathefed"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/ciathefed/tree-sitter-nyx"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
