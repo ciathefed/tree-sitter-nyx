@@ -4,11 +4,49 @@
  * @license MIT
  */
 
-const INSTRUCTIONS = ["mov", "syscall", "hlt"];
+const INSTRUCTIONS = [
+  "nop",
+  "mov",
+  "ldr",
+  "str",
+  "push",
+  "pop",
+  "add",
+  "sub",
+  "mul",
+  "div",
+  "and",
+  "or",
+  "xor",
+  "shl",
+  "shr",
+  "cmp",
+  "jmp",
+  "jeq",
+  "jne",
+  "jlt",
+  "jgt",
+  "jle",
+  "jge",
+  "call",
+  "ret",
+  "inc",
+  "dec",
+  "syscall",
+  "hlt",
+];
 
-const DIRECTIVES = [".section", "db"];
+const DIRECTIVES = ["db", "resb", ".section", ".entry", ".ascii", ".asciz"];
 
-const PREPROCESSOR = ["#define", "#include"];
+const PREPROCESSOR = [
+  "#error",
+  "#define",
+  "#include",
+  "#ifdef",
+  "#ifndef",
+  "#else",
+  "#endif",
+];
 
 const REGISTERS = [
   ...Array.from({ length: 16 }, (_, i) => `b${i}`),
