@@ -97,7 +97,8 @@ module.exports = grammar({
 
     register: ($) => choice(...REGISTERS.map((r) => token(r))),
 
-    immediate: ($) => token(choice(/0b[01]+/, /0x[0-9a-fA-F]+/, /\d+/)),
+    immediate: ($) =>
+      token(choice(/0b[01]+/, /0o[0-7]+/, /0x[0-9a-fA-F]+/, /\d+/)),
 
     string: ($) => token(/"[^"]*"/),
 
