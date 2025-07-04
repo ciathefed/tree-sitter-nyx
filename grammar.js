@@ -29,9 +29,10 @@ module.exports = grammar({
 
     label: ($) => seq($.identifier, ":"),
 
-    assembler_directive: ($) => seq(".", $.identifier, optional($.operand)),
-
-    preprocessor_directive: ($) => seq("#", $.identifier, optional($.operand)),
+    assembler_directive: ($) =>
+      seq(".", field("name", $.identifier), optional($.operand)),
+    preprocessor_directive: ($) =>
+      seq("#", field("name", $.identifier), optional($.operand)),
 
     operand: ($) =>
       choice(
