@@ -34,11 +34,18 @@ module.exports = grammar({
     preprocessor_directive: ($) => seq("#", $.identifier, optional($.operand)),
 
     operand: ($) =>
-      choice($.register, $.immediate, $.memory_reference, $.identifier),
+      choice(
+        $.register,
+        $.immediate,
+        $.string,
+        $.memory_reference,
+        $.identifier,
+      ),
 
     register: ($) =>
       /b[0-9]+|w[0-9]+|d[0-9]+|q[0-9]+|ff[0-9]+|dd[0-9]+|ip|sp|bp/,
     immediate: ($) => choice(/0x[0-9a-fA-F]+/, /0b[01]+/, /[0-9]+/),
+    string: ($) => /"([^"\\]|\\.)*"/,
     memory_reference: ($) =>
       seq("[", $.operand, optional(seq(",", $.operand)), "]"),
     identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
