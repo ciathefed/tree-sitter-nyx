@@ -23,6 +23,122 @@
         "required": true,
         "types": [
           {
+            "type": "ADD",
+            "named": false
+          },
+          {
+            "type": "AND",
+            "named": false
+          },
+          {
+            "type": "CALL",
+            "named": false
+          },
+          {
+            "type": "CMP",
+            "named": false
+          },
+          {
+            "type": "DEC",
+            "named": false
+          },
+          {
+            "type": "DIV",
+            "named": false
+          },
+          {
+            "type": "HLT",
+            "named": false
+          },
+          {
+            "type": "INC",
+            "named": false
+          },
+          {
+            "type": "JEQ",
+            "named": false
+          },
+          {
+            "type": "JGE",
+            "named": false
+          },
+          {
+            "type": "JGT",
+            "named": false
+          },
+          {
+            "type": "JLE",
+            "named": false
+          },
+          {
+            "type": "JLT",
+            "named": false
+          },
+          {
+            "type": "JMP",
+            "named": false
+          },
+          {
+            "type": "JNE",
+            "named": false
+          },
+          {
+            "type": "LDR",
+            "named": false
+          },
+          {
+            "type": "MOV",
+            "named": false
+          },
+          {
+            "type": "MUL",
+            "named": false
+          },
+          {
+            "type": "NOP",
+            "named": false
+          },
+          {
+            "type": "OR",
+            "named": false
+          },
+          {
+            "type": "POP",
+            "named": false
+          },
+          {
+            "type": "PUSH",
+            "named": false
+          },
+          {
+            "type": "RET",
+            "named": false
+          },
+          {
+            "type": "SHL",
+            "named": false
+          },
+          {
+            "type": "SHR",
+            "named": false
+          },
+          {
+            "type": "STR",
+            "named": false
+          },
+          {
+            "type": "SUB",
+            "named": false
+          },
+          {
+            "type": "SYSCALL",
+            "named": false
+          },
+          {
+            "type": "XOR",
+            "named": false
+          },
+          {
             "type": "add",
             "named": false
           },
@@ -262,6 +378,34 @@
     }
   },
   {
+    "type": "#DEFINE",
+    "named": false
+  },
+  {
+    "type": "#ELSE",
+    "named": false
+  },
+  {
+    "type": "#ENDIF",
+    "named": false
+  },
+  {
+    "type": "#ERROR",
+    "named": false
+  },
+  {
+    "type": "#IFDEF",
+    "named": false
+  },
+  {
+    "type": "#IFNDEF",
+    "named": false
+  },
+  {
+    "type": "#INCLUDE",
+    "named": false
+  },
+  {
     "type": "#define",
     "named": false
   },
@@ -294,6 +438,22 @@
     "named": false
   },
   {
+    "type": ".ASCII",
+    "named": false
+  },
+  {
+    "type": ".ASCIZ",
+    "named": false
+  },
+  {
+    "type": ".ENTRY",
+    "named": false
+  },
+  {
+    "type": ".SECTION",
+    "named": false
+  },
+  {
     "type": ".ascii",
     "named": false
   },
@@ -311,6 +471,130 @@
   },
   {
     "type": ":",
+    "named": false
+  },
+  {
+    "type": "ADD",
+    "named": false
+  },
+  {
+    "type": "AND",
+    "named": false
+  },
+  {
+    "type": "CALL",
+    "named": false
+  },
+  {
+    "type": "CMP",
+    "named": false
+  },
+  {
+    "type": "DB",
+    "named": false
+  },
+  {
+    "type": "DEC",
+    "named": false
+  },
+  {
+    "type": "DIV",
+    "named": false
+  },
+  {
+    "type": "HLT",
+    "named": false
+  },
+  {
+    "type": "INC",
+    "named": false
+  },
+  {
+    "type": "JEQ",
+    "named": false
+  },
+  {
+    "type": "JGE",
+    "named": false
+  },
+  {
+    "type": "JGT",
+    "named": false
+  },
+  {
+    "type": "JLE",
+    "named": false
+  },
+  {
+    "type": "JLT",
+    "named": false
+  },
+  {
+    "type": "JMP",
+    "named": false
+  },
+  {
+    "type": "JNE",
+    "named": false
+  },
+  {
+    "type": "LDR",
+    "named": false
+  },
+  {
+    "type": "MOV",
+    "named": false
+  },
+  {
+    "type": "MUL",
+    "named": false
+  },
+  {
+    "type": "NOP",
+    "named": false
+  },
+  {
+    "type": "OR",
+    "named": false
+  },
+  {
+    "type": "POP",
+    "named": false
+  },
+  {
+    "type": "PUSH",
+    "named": false
+  },
+  {
+    "type": "RESB",
+    "named": false
+  },
+  {
+    "type": "RET",
+    "named": false
+  },
+  {
+    "type": "SHL",
+    "named": false
+  },
+  {
+    "type": "SHR",
+    "named": false
+  },
+  {
+    "type": "STR",
+    "named": false
+  },
+  {
+    "type": "SUB",
+    "named": false
+  },
+  {
+    "type": "SYSCALL",
+    "named": false
+  },
+  {
+    "type": "XOR",
     "named": false
   },
   {

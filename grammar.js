@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-const INSTRUCTIONS = [
+const INSTRUCTIONS = caseInsensitive([
   "nop",
   "mov",
   "ldr",
@@ -34,11 +34,18 @@ const INSTRUCTIONS = [
   "dec",
   "syscall",
   "hlt",
-];
+]);
 
-const DIRECTIVES = ["db", "resb", ".section", ".entry", ".ascii", ".asciz"];
+const DIRECTIVES = caseInsensitive([
+  "db",
+  "resb",
+  ".section",
+  ".entry",
+  ".ascii",
+  ".asciz",
+]);
 
-const PREPROCESSOR = [
+const PREPROCESSOR = caseInsensitive([
   "#error",
   "#define",
   "#include",
@@ -46,7 +53,7 @@ const PREPROCESSOR = [
   "#ifndef",
   "#else",
   "#endif",
-];
+]);
 
 const REGISTERS = [
   ...Array.from({ length: 16 }, (_, i) => `b${i}`),
@@ -107,3 +114,7 @@ module.exports = grammar({
     comment: ($) => token(seq(";", /.*/)),
   },
 });
+
+function caseInsensitive(words) {
+  return words.flatMap((w) => [w.toLowerCase(), w.toUpperCase()]);
+}
