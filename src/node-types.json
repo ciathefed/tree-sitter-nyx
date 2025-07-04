@@ -1,15 +1,38 @@
 [
   {
-    "type": "assembler_directive",
+    "type": "directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "operands",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "instruction",
     "named": true,
     "fields": {
-      "name": {
+      "mnemonic": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "identifier",
-            "named": true
+            "type": "hlt",
+            "named": false
+          },
+          {
+            "type": "mov",
+            "named": false
+          },
+          {
+            "type": "syscall",
+            "named": false
           }
         ]
       }
@@ -19,38 +42,7 @@
       "required": false,
       "types": [
         {
-          "type": "operand",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "immediate",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "instruction",
-    "named": true,
-    "fields": {
-      "opcode": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "operand",
+          "type": "operands",
           "named": true
         }
       ]
@@ -66,21 +58,6 @@
       "types": [
         {
           "type": "identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "memory_reference",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "operand",
           "named": true
         }
       ]
@@ -103,10 +80,6 @@
           "named": true
         },
         {
-          "type": "memory_reference",
-          "named": true
-        },
-        {
           "type": "register",
           "named": true
         },
@@ -118,23 +91,12 @@
     }
   },
   {
-    "type": "preprocessor_directive",
+    "type": "operands",
     "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
-      "multiple": false,
-      "required": false,
+      "multiple": true,
+      "required": true,
       "types": [
         {
           "type": "operand",
@@ -142,6 +104,26 @@
         }
       ]
     }
+  },
+  {
+    "type": "preprocessor_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "operands",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "register",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "source_file",
@@ -153,11 +135,11 @@
       "required": false,
       "types": [
         {
-          "type": "assembler_directive",
+          "type": "comment",
           "named": true
         },
         {
-          "type": "comment",
+          "type": "directive",
           "named": true
         },
         {
@@ -176,7 +158,11 @@
     }
   },
   {
-    "type": "#",
+    "type": "#define",
+    "named": false
+  },
+  {
+    "type": "#include",
     "named": false
   },
   {
@@ -184,7 +170,7 @@
     "named": false
   },
   {
-    "type": ".",
+    "type": ".section",
     "named": false
   },
   {
@@ -192,11 +178,67 @@
     "named": false
   },
   {
-    "type": "[",
+    "type": "b0",
     "named": false
   },
   {
-    "type": "]",
+    "type": "b1",
+    "named": false
+  },
+  {
+    "type": "b10",
+    "named": false
+  },
+  {
+    "type": "b11",
+    "named": false
+  },
+  {
+    "type": "b12",
+    "named": false
+  },
+  {
+    "type": "b13",
+    "named": false
+  },
+  {
+    "type": "b14",
+    "named": false
+  },
+  {
+    "type": "b15",
+    "named": false
+  },
+  {
+    "type": "b2",
+    "named": false
+  },
+  {
+    "type": "b3",
+    "named": false
+  },
+  {
+    "type": "b4",
+    "named": false
+  },
+  {
+    "type": "b5",
+    "named": false
+  },
+  {
+    "type": "b6",
+    "named": false
+  },
+  {
+    "type": "b7",
+    "named": false
+  },
+  {
+    "type": "b8",
+    "named": false
+  },
+  {
+    "type": "b9",
     "named": false
   },
   {
@@ -204,15 +246,351 @@
     "named": true
   },
   {
+    "type": "d0",
+    "named": false
+  },
+  {
+    "type": "d1",
+    "named": false
+  },
+  {
+    "type": "d10",
+    "named": false
+  },
+  {
+    "type": "d11",
+    "named": false
+  },
+  {
+    "type": "d12",
+    "named": false
+  },
+  {
+    "type": "d13",
+    "named": false
+  },
+  {
+    "type": "d14",
+    "named": false
+  },
+  {
+    "type": "d15",
+    "named": false
+  },
+  {
+    "type": "d2",
+    "named": false
+  },
+  {
+    "type": "d3",
+    "named": false
+  },
+  {
+    "type": "d4",
+    "named": false
+  },
+  {
+    "type": "d5",
+    "named": false
+  },
+  {
+    "type": "d6",
+    "named": false
+  },
+  {
+    "type": "d7",
+    "named": false
+  },
+  {
+    "type": "d8",
+    "named": false
+  },
+  {
+    "type": "d9",
+    "named": false
+  },
+  {
+    "type": "db",
+    "named": false
+  },
+  {
+    "type": "dd0",
+    "named": false
+  },
+  {
+    "type": "dd1",
+    "named": false
+  },
+  {
+    "type": "dd10",
+    "named": false
+  },
+  {
+    "type": "dd11",
+    "named": false
+  },
+  {
+    "type": "dd12",
+    "named": false
+  },
+  {
+    "type": "dd13",
+    "named": false
+  },
+  {
+    "type": "dd14",
+    "named": false
+  },
+  {
+    "type": "dd15",
+    "named": false
+  },
+  {
+    "type": "dd2",
+    "named": false
+  },
+  {
+    "type": "dd3",
+    "named": false
+  },
+  {
+    "type": "dd4",
+    "named": false
+  },
+  {
+    "type": "dd5",
+    "named": false
+  },
+  {
+    "type": "dd6",
+    "named": false
+  },
+  {
+    "type": "dd7",
+    "named": false
+  },
+  {
+    "type": "dd8",
+    "named": false
+  },
+  {
+    "type": "dd9",
+    "named": false
+  },
+  {
+    "type": "ff0",
+    "named": false
+  },
+  {
+    "type": "ff1",
+    "named": false
+  },
+  {
+    "type": "ff10",
+    "named": false
+  },
+  {
+    "type": "ff11",
+    "named": false
+  },
+  {
+    "type": "ff12",
+    "named": false
+  },
+  {
+    "type": "ff13",
+    "named": false
+  },
+  {
+    "type": "ff14",
+    "named": false
+  },
+  {
+    "type": "ff15",
+    "named": false
+  },
+  {
+    "type": "ff2",
+    "named": false
+  },
+  {
+    "type": "ff3",
+    "named": false
+  },
+  {
+    "type": "ff4",
+    "named": false
+  },
+  {
+    "type": "ff5",
+    "named": false
+  },
+  {
+    "type": "ff6",
+    "named": false
+  },
+  {
+    "type": "ff7",
+    "named": false
+  },
+  {
+    "type": "ff8",
+    "named": false
+  },
+  {
+    "type": "ff9",
+    "named": false
+  },
+  {
+    "type": "hlt",
+    "named": false
+  },
+  {
     "type": "identifier",
     "named": true
   },
   {
-    "type": "register",
+    "type": "immediate",
     "named": true
+  },
+  {
+    "type": "mov",
+    "named": false
+  },
+  {
+    "type": "q0",
+    "named": false
+  },
+  {
+    "type": "q1",
+    "named": false
+  },
+  {
+    "type": "q10",
+    "named": false
+  },
+  {
+    "type": "q11",
+    "named": false
+  },
+  {
+    "type": "q12",
+    "named": false
+  },
+  {
+    "type": "q13",
+    "named": false
+  },
+  {
+    "type": "q14",
+    "named": false
+  },
+  {
+    "type": "q15",
+    "named": false
+  },
+  {
+    "type": "q2",
+    "named": false
+  },
+  {
+    "type": "q3",
+    "named": false
+  },
+  {
+    "type": "q4",
+    "named": false
+  },
+  {
+    "type": "q5",
+    "named": false
+  },
+  {
+    "type": "q6",
+    "named": false
+  },
+  {
+    "type": "q7",
+    "named": false
+  },
+  {
+    "type": "q8",
+    "named": false
+  },
+  {
+    "type": "q9",
+    "named": false
   },
   {
     "type": "string",
     "named": true
+  },
+  {
+    "type": "syscall",
+    "named": false
+  },
+  {
+    "type": "w0",
+    "named": false
+  },
+  {
+    "type": "w1",
+    "named": false
+  },
+  {
+    "type": "w10",
+    "named": false
+  },
+  {
+    "type": "w11",
+    "named": false
+  },
+  {
+    "type": "w12",
+    "named": false
+  },
+  {
+    "type": "w13",
+    "named": false
+  },
+  {
+    "type": "w14",
+    "named": false
+  },
+  {
+    "type": "w15",
+    "named": false
+  },
+  {
+    "type": "w2",
+    "named": false
+  },
+  {
+    "type": "w3",
+    "named": false
+  },
+  {
+    "type": "w4",
+    "named": false
+  },
+  {
+    "type": "w5",
+    "named": false
+  },
+  {
+    "type": "w6",
+    "named": false
+  },
+  {
+    "type": "w7",
+    "named": false
+  },
+  {
+    "type": "w8",
+    "named": false
+  },
+  {
+    "type": "w9",
+    "named": false
   }
 ]

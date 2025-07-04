@@ -4,13 +4,28 @@
  * @license MIT
  */
 
+const INSTRUCTIONS = ["mov", "syscall", "hlt"];
+
+const DIRECTIVES = [".section", "db"];
+
+const PREPROCESSOR = ["#define", "#include"];
+
+const REGISTERS = [
+  ...Array.from({ length: 16 }, (_, i) => `b${i}`),
+  ...Array.from({ length: 16 }, (_, i) => `w${i}`),
+  ...Array.from({ length: 16 }, (_, i) => `d${i}`),
+  ...Array.from({ length: 16 }, (_, i) => `q${i}`),
+  ...Array.from({ length: 16 }, (_, i) => `ff${i}`),
+  ...Array.from({ length: 16 }, (_, i) => `dd${i}`),
+];
+
 module.exports = grammar({
   name: "nyx",
 
   conflicts: ($) => [
-    [$.assembler_directive],
-    [$.preprocessor_directive],
     [$.instruction],
+    [$.preprocessor_directive],
+    [$.directive],
   ],
 
   rules: {
@@ -20,41 +35,37 @@ module.exports = grammar({
       choice(
         $.instruction,
         $.label,
-        $.assembler_directive,
+        $.directive,
         $.preprocessor_directive,
         $.comment,
       ),
 
     instruction: ($) =>
-      seq(field("opcode", $.identifier), optional(sep1(",", $.operand))),
+      seq(
+        field("mnemonic", choice(...INSTRUCTIONS.map((i) => token(i)))),
+        optional($.operands),
+      ),
+
+    operands: ($) => seq($.operand, repeat(seq(",", $.operand))),
+
+    operand: ($) => choice($.immediate, $.register, $.string, $.identifier),
+
+    register: ($) => choice(...REGISTERS.map((r) => token(r))),
+
+    immediate: ($) => token(choice(/0b[01]+/, /0x[0-9a-fA-F]+/, /\d+/)),
+
+    string: ($) => token(/"[^"]*"/),
 
     label: ($) => seq($.identifier, ":"),
 
-    assembler_directive: ($) =>
-      seq(".", field("name", $.identifier), optional($.operand)),
+    directive: ($) =>
+      seq(choice(...DIRECTIVES.map((p) => token(p))), optional($.operands)),
+
     preprocessor_directive: ($) =>
-      seq("#", field("name", $.identifier), optional($.operand)),
+      seq(choice(...PREPROCESSOR.map((p) => token(p))), optional($.operands)),
 
-    operand: ($) =>
-      choice(
-        $.register,
-        $.immediate,
-        $.string,
-        $.memory_reference,
-        $.identifier,
-      ),
-
-    register: ($) =>
-      /b[0-9]+|w[0-9]+|d[0-9]+|q[0-9]+|ff[0-9]+|dd[0-9]+|ip|sp|bp/,
-    immediate: ($) => choice(/0x[0-9a-fA-F]+/, /0b[01]+/, /[0-9]+/),
-    string: ($) => /"([^"\\]|\\.)*"/,
-    memory_reference: ($) =>
-      seq("[", $.operand, optional(seq(",", $.operand)), "]"),
     identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
-    comment: ($) => /;.*/,
+
+    comment: ($) => token(seq(";", /.*/)),
   },
 });
-
-function sep1(separator, rule) {
-  return seq(rule, repeat(seq(separator, rule)));
-}
