@@ -7,7 +7,11 @@
 module.exports = grammar({
   name: "nyx",
 
-  conflicts: ($) => [[$.assembler_directive], [$.preprocessor_directive]],
+  conflicts: ($) => [
+    [$.assembler_directive],
+    [$.preprocessor_directive],
+    [$.instruction],
+  ],
 
   rules: {
     source_file: ($) => repeat($._statement),
@@ -22,10 +26,7 @@ module.exports = grammar({
       ),
 
     instruction: ($) =>
-      seq(
-        field("opcode", $.identifier),
-        optional(seq(",", sep1(",", $.operand))),
-      ),
+      seq(field("opcode", $.identifier), optional(sep1(",", $.operand))),
 
     label: ($) => seq($.identifier, ":"),
 
