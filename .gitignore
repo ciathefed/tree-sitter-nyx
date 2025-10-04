@@ -23,3 +23,5 @@ target/
 *.tar.gz
 *.tgz
 *.zip
+
+.DS_Store
